@@ -65,7 +65,7 @@ def get_user():
 
 def main():
     # 로컬 개발용: devserver.bat 또는 python -m flask run 사용을 권장
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)), debug=True)
 
 if __name__ == "__main__":
     main()
