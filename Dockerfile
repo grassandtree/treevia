@@ -21,12 +21,9 @@ COPY . .
 # 환경 변수 설정
 ENV FLASK_APP=main.py
 ENV PORT=8080
-ENV PYTHONUNBUFFERED=1
 
 # 포트 노출
 EXPOSE 8080
-
-# ... (이전 내용 동일)
 
 # 애플리케이션 실행 (gunicorn 사용)
 # Gunicorn은 자동으로 0.0.0.0 호스트를 사용합니다.
