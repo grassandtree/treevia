@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: treevia
+    ports:
+      - "80:5000"
+    environment:
+      - FLASK_APP=main.py
+      - PORT=5000
+      - SECRET_KEY=${SECRET_KEY}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - X_NAVER_CLIENT_ID=${X_NAVER_CLIENT_ID}
+      - X_NAVER_CLIENT_SECRET=${X_NAVER_CLIENT_SECRET}
+      - GOOGLE_CSE_API_KEY=${GOOGLE_CSE_API_KEY}
+      - GOOGLE_CSE_ID=${GOOGLE_CSE_ID}
+      - PLANT_API_SERVICE_KEY=${PLANT_API_SERVICE_KEY}
+    volumes:
+      - .:/app
+    networks:
+      - treevia-network
+    # 자동 재시작
+    restart: unless-stopped
+
+networks:
+  treevia-network:
+    driver: bridge

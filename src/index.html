@@ -1,12 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
+    <title>TreeVia - 홈</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      
+      .user-section {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .user-section img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      
+      .login-btn, .logout-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      .login-btn {
+        background: #667eea;
+        color: white;
+      }
+      
+      .login-btn:hover {
+        background: #5568d3;
+      }
+      
+      .logout-btn {
+        background: #f44336;
+        color: white;
+      }
+      
+      .logout-btn:hover {
+        background: #da190b;
+      }
+      
+      .not-logged {
+        display: block;
+      }
+      
+      .logged {
+        display: none;
+      }
+    </style>
   </head>
-
   <body>
-    <h1>Hello World</h1>
+    <div class="container">
+      <h1>🌳 TreeVia에 오신 것을 환영합니다</h1>
+      
+      <div class="user-section">
+        <div class="not-logged" id="notLoggedIn">
+          <p>로그인하여 서비스를 이용하세요</p>
+          <a href="/login" class="login-btn">구글로 로그인</a>
+        </div>
+        
+        <div class="logged" id="loggedIn">
+          <img id="profilePic" alt="프로필 사진">
+          <p>안녕하세요, <strong id="userName"></strong>님!</p>
+          <p id="userEmail"></p>
+          <a href="/logout" class="logout-btn">로그아웃</a>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // 페이지 로드 시 사용자 정보 확인
+      async function checkLoginStatus() {
+        try {
+          const response = await fetch('/user');
+          if (response.ok) {
+            const user = await response.json();
+            showLoggedInView(user);
+          } else {
+            showLoggedOutView();
+          }
+        } catch (error) {
+          console.error('사용자 정보 확인 실패:', error);
+          showLoggedOutView();
+        }
+      }
+      
+      function showLoggedInView(user) {
+        document.getElementById('notLoggedIn').style.display = 'none';
+        document.getElementById('loggedIn').style.display = 'block';
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userEmail').textContent = user.email;
+        document.getElementById('profilePic').src = user.picture;
+      }
+      
+      function showLoggedOutView() {
+        document.getElementById('notLoggedIn').style.display = 'block';
+        document.getElementById('loggedIn').style.display = 'none';
+      }
+      
+      // 페이지 로드 시 실행
+      checkLoginStatus();
+    </script>
   </body>
 </html>

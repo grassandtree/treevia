@@ -24,3 +24,6 @@ env/
 
 # environment variables
 .env
+
+# flask session files
+flask_session/

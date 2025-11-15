@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구글 로그인</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        #g_id_onload {
+            margin: 20px 0;
+        }
+        
+        .user-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .user-info.show {
+            display: block;
+        }
+        
+        .user-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        
+        .logout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .logout-btn:hover {
+            background: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Treevia에 접속하기</h1>
+        
+        <div class="g_id_signin" data-type="standard"></div>
+        
+        <div id="userInfo" class="user-info">
+            <img id="userPicture" alt="프로필">
+            <div>
+                <p><strong>이름:</strong> <span id="userName"></span></p>
+                <p><strong>이메일:</strong> <span id="userEmail"></span></p>
+            </div>
+            <button class="logout-btn" onclick="logout()">로그아웃</button>
+            <button class="logout-btn" style="background: #667eea; margin-left: 10px;" onclick="goHome()">홈으로</button>
+        </div>
+    </div>
+    
+    <script>
+        let googleClientId = '';
+        
+        // 백엔드에서 클라이언트 ID 로드
+        async function initializeGoogle() {
+            try {
+                const response = await fetch('/config/google-client-id');
+                const data = await response.json();
+                googleClientId = data.client_id;
+                
+                // Google Sign-In 초기화
+                if (window.google && window.google.accounts && window.google.accounts.id) {
+                    window.google.accounts.id.initialize({
+                        client_id: googleClientId,
+                        callback: handleCredentialResponse
+                    });
+                    window.google.accounts.id.renderButton(
+                        document.querySelector('.g_id_signin'),
+                        { theme: 'outline', size: 'large' }
+                    );
+                } else {
+                    console.error('Google Sign-In 라이브러리가 로드되지 않았습니다');
+                }
+            } catch (error) {
+                console.error('클라이언트 ID 로드 실패:', error);
+                alert('로그인 초기화 실패. 페이지를 새로고침해주세요.');
+            }
+        }
+        
+        // 페이지 로드 시 사용자 정보 확인
+        async function checkUser() {
+            try {
+                const response = await fetch('/user');
+                if (response.ok) {
+                    const user = await response.json();
+                    displayUserInfo(user);
+                }
+            } catch (error) {
+                console.error('사용자 정보 확인 실패:', error);
+            }
+        }
+        
+        // 구글 로그인 콜백
+        function handleCredentialResponse(response) {
+            // 토큰을 백엔드로 전송
+            fetch('/auth/google/callback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token: response.credential })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    displayUserInfo(data.user);
+                } else {
+                    alert('로그인 실패: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('로그인 처리 중 오류:', error);
+                alert('로그인 처리 중 오류가 발생했습니다.');
+            });
+        }
+        
+        // 사용자 정보 표시
+        function displayUserInfo(user) {
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userPicture').src = user.picture;
+            document.getElementById('userInfo').classList.add('show');
+            document.querySelector('.g_id_signin').style.display = 'none';
+        }
+        
+        // 로그아웃
+        function logout() {
+            fetch('/logout')
+            .then(() => {
+                document.getElementById('userInfo').classList.remove('show');
+                document.querySelector('.g_id_signin').style.display = 'block';
+                location.reload();
+            });
+        }
+        
+        // 홈으로 이동
+        function goHome() {
+            window.location.href = '/';
+        }
+        
+        // 페이지 로드 시 실행
+        window.addEventListener('load', () => {
+            checkUser();
+            initializeGoogle();
+        });
+    </script>
+</body>
+</html>

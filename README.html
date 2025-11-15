@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>treevia</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="treevia">treevia</h1>
+<p>tree trivia</p>
+<blockquote>
+<p>나무 사진을 보고 나무의 이름을 맞춰보세요. (TBD)</p>
+</blockquote>
+<hr>
+<h3 id="-앱-소개-tbd">🌳 앱 소개 (TBD)</h3>
+<p><strong>Treevia</strong>는 나무 도감에 있는 다양한 사진들을 보며 나무의 이름을 맞히는 재미있는 퀴즈 게임입니다. 나무 전문가가 되어 보세요!</p>
+<h3 id="-주요-기능-tbd">✨ 주요 기능 (TBD)</h3>
+<ul>
+<li><strong>랜덤 나무 퀴즈</strong>: 방대한 나무 도감에서 사진을 무작위로 제시합니다.</li>
+<li><strong>쉽고 빠른 학습</strong>: 사진과 함께 나무의 이름을 맞히며 자연스럽게 지식을 습득할 수 있습니다.</li>
+<li><strong>직관적인 인터페이스</strong>: 누구나 쉽게 이용할 수 있도록 단순하고 깔끔한 화면을 제공합니다.</li>
+<li><strong>정답 해설</strong>: 정답을 맞힌 후에는 해당 나무에 대한 간단한 설명을 볼 수 있습니다.</li>
+</ul>
+<h3 id="-사용-방법-tbd">🎮 사용 방법 (TBD)</h3>
+<ol>
+<li>앱을 실행하면 무작위로 선택된 나무 사진이 나타납니다.</li>
+<li>사진을 보고 아래 제시된 보기 중에서 정답을 선택하세요.</li>
+<li>정답을 맞히면 점수를 얻고, 틀려도 정답과 함께 설명을 확인할 수 있습니다.</li>
+<li>다음 문제로 넘어가 계속해서 퀴즈를 즐기세요!</li>
+</ol>
+<h3 id="-개발-환경-tbd">💻 개발 환경 (TBD)</h3>
+<ul>
+<li><strong>Backend</strong>
+<ul>
+<li><strong>언어</strong>: Python</li>
+<li><strong>프레임워크</strong>: Flask</li>
+<li><strong>데이터베이스</strong>: SQLAlchemy, SQLite (초기)</li>
+</ul>
+</li>
+<li><strong>Frontend (Mobile)</strong>
+<ul>
+<li><strong>언어</strong>: Kotlin / Swift</li>
+<li><strong>프레임워크</strong>: Android Studio / Xcode</li>
+</ul>
+</li>
+</ul>
+<h3 id="-실행-방법">🚀 실행 방법</h3>
+<h4 id="1-google-cloud-oauth-설정">1. Google Cloud OAuth 설정</h4>
+<ol>
+<li><a href="https://console.cloud.google.com/">Google Cloud Console</a> 접속</li>
+<li>새 프로젝트 생성</li>
+<li><strong>OAuth 2.0 클라이언트 ID</strong> 생성
+<ul>
+<li>애플리케이션 유형: <strong>웹 애플리케이션</strong></li>
+<li>승인된 리다이렉션 URI:
+<ul>
+<li><code>http://localhost/auth/google/callback</code></li>
+<li><code>http://localhost:80/auth/google/callback</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>클라이언트 ID</strong> 복사하여 <code>.env</code> 파일에 저장</li>
+</ol>
+<h4 id="2-환경-설정">2. 환경 설정</h4>
+<pre><code class="language-bash"><span class="hljs-comment"># .env 파일 생성 (.env.example 참조)</span>
+GOOGLE_CLIENT_ID=your-google-client-id-here
+SECRET_KEY=your-secret-key-change-this
+PORT=80
+</code></pre>
+<h4 id="3-가상-환경-생성-및-활성화">3. 가상 환경 생성 및 활성화</h4>
+<pre><code class="language-bash">python -m venv .venv
+<span class="hljs-comment"># Windows</span>
+.\.venv\Scripts\activate
+<span class="hljs-comment"># macOS/Linux</span>
+<span class="hljs-built_in">source</span> .venv/bin/activate
+</code></pre>
+<h4 id="4-필요한-라이브러리-설치">4. 필요한 라이브러리 설치</h4>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+<h4 id="5-flask-서버-실행">5. Flask 서버 실행</h4>
+<p><strong>Windows:</strong></p>
+<pre><code class="language-powershell">.\devserver.bat
+</code></pre>
+<p><strong>macOS/Linux:</strong></p>
+<pre><code class="language-bash"><span class="hljs-built_in">source</span> .venv/bin/activate
+python -m flask --app main run --debug
+</code></pre>
+<p>또는 직접 실행:</p>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<h4 id="6-브라우저-접속">6. 브라우저 접속</h4>
+<pre><code>http://localhost/
+</code></pre>
+<h3 id="-docker-실행-방법">🐳 Docker 실행 방법</h3>
+<h4 id="docker로-실행-권장">Docker로 실행 (권장)</h4>
+<p><strong>전제 조건</strong>: Docker와 Docker Compose 설치 필수</p>
+<ol>
+<li>
+<p><strong><code>.env</code> 파일 확인</strong></p>
+<pre><code class="language-bash"><span class="hljs-comment"># .env 파일이 있는지 확인</span>
+<span class="hljs-comment"># 필요한 환경 변수 설정 확인</span>
+</code></pre>
+</li>
+<li>
+<p><strong>Docker Compose로 실행</strong></p>
+<pre><code class="language-powershell">docker<span class="hljs-literal">-compose</span> up <span class="hljs-literal">--build</span>
+</code></pre>
+</li>
+<li>
+<p><strong>브라우저 접속</strong></p>
+<pre><code>http://localhost/
+</code></pre>
+</li>
+<li>
+<p><strong>중지하기</strong></p>
+<pre><code class="language-powershell">docker<span class="hljs-literal">-compose</span> down
+</code></pre>
+</li>
+</ol>
+<h4 id="docker-명령어-compose-없이">Docker 명령어 (Compose 없이)</h4>
+<pre><code class="language-powershell"><span class="hljs-comment"># 이미지 빌드</span>
+docker build <span class="hljs-literal">-t</span> treevia:latest .
+
+<span class="hljs-comment"># 컨테이너 실행</span>
+docker run <span class="hljs-literal">-p</span> <span class="hljs-number">80</span>:<span class="hljs-number">5000</span> <span class="hljs-literal">--env-file</span> .env treevia:latest
+
+<span class="hljs-comment"># 컨테이너 중지</span>
+docker stop &lt;container<span class="hljs-literal">-id</span>&gt;
+</code></pre>
+<h4 id="docker-유용한-명령어">Docker 유용한 명령어</h4>
+<pre><code class="language-powershell"><span class="hljs-comment"># 실행 중인 컨테이너 확인</span>
+docker <span class="hljs-built_in">ps</span>
+
+<span class="hljs-comment"># 컨테이너 로그 확인</span>
+docker logs &lt;container<span class="hljs-literal">-id</span>&gt;
+
+<span class="hljs-comment"># 컨테이너 내부 접속</span>
+docker exec <span class="hljs-literal">-it</span> &lt;container<span class="hljs-literal">-id</span>&gt; bash
+
+<span class="hljs-comment"># 이미지 제거</span>
+docker rmi treevia:latest
+</code></pre>
+<h3 id="-기여하기-tbd">🤝 기여하기 (TBD)</h3>
+<p>버그를 발견했거나 새로운 기능을 제안하고 싶으시면 언제든지 연락해 주세요. 여러분의 의견은 앱을 더 좋게 만드는 데 큰 도움이 됩니다.</p>
+<hr>
+<p><strong>© 2025 Treevia Inc.</strong></p>
+
+            
+            
+        </body>
+        </html>
