@@ -6,6 +6,7 @@ services:
     container_name: treevia
     ports:
       - "80:5000"
+      - "8080:5000"
     environment:
       - FLASK_APP=main.py
       - PORT=5000
