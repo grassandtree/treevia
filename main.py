@@ -64,7 +64,8 @@ def get_user():
     return {'status': 'not_logged_in'}, 401
 
 def main():
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)), debug=True)
+    # 로컬 개발용: devserver.bat 또는 python -m flask run 사용을 권장
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
 
 if __name__ == "__main__":
     main()
