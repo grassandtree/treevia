@@ -28,4 +28,4 @@ EXPOSE 8080
 # 애플리케이션 실행 (gunicorn 사용)
 # Gunicorn은 자동으로 0.0.0.0 호스트를 사용합니다.
 # Cloud Run이 제공하는 PORT 환경 변수를 사용하도록 바인딩합니다.
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "--workers", "1", "main:app"]
+CMD exec gunicorn --bind "0.0.0.0:$PORT" --workers 1 "main:app"
