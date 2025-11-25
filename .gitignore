@@ -27,3 +27,8 @@ env/
 
 # flask session files
 flask_session/
+
+# database files
+*.sqlite3
+*.db
+*.duckdb
