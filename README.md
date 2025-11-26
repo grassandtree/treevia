@@ -1,7 +1,7 @@
 # treevia
 tree trivia
 
-> 나무 사진을 보고 나무의 이름을 맞춰보세요. (TBD)
+나무 사진을 보고 나무의 이름을 맞춰보세요. (TBD)
 
 ---
 
@@ -25,13 +25,8 @@ tree trivia
 
 ### 💻 개발 환경 (TBD)
 
-*   **Backend**
-    *   **언어**: Python
-    *   **프레임워크**: Flask
-    *   **데이터베이스**: SQLAlchemy, SQLite (초기)
-*   **Frontend (Mobile)**
-    *   **언어**: Kotlin / Swift
-    *   **프레임워크**: Android Studio / Xcode
+*   **언어**: Python
+*   **프레임워크**: Flask
 
 ### 🚀 실행 방법
 
